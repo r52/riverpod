@@ -1,5 +1,12 @@
 # melos_managed_dependency_overrides: lint_visitor_generator
 dependency_overrides:
+  custom_lint:
+    path: /Users/remirousselet/dev/dart_custom_lint/packages/custom_lint
+  custom_lint_builder:
+    path: /Users/remirousselet/dev/dart_custom_lint/packages/custom_lint_builder
+  custom_lint_core:
+    path: /Users/remirousselet/dev/dart_custom_lint/packages/custom_lint_core  
+
   flutter_riverpod:
     path: ../flutter_riverpod
   hooks_riverpod:
