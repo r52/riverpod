@@ -8,7 +8,7 @@ import '../riverpod_custom_lint.dart';
 class ProtectedNotifierProperties extends RiverpodLintRule {
   const ProtectedNotifierProperties() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'protected_notifier_properties',
     problemMessage:
         'Notifier.state should not be used outside of its own class.',

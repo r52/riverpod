@@ -50,7 +50,7 @@ String genericsDisplayStringFor(TypeParameterList? typeParameters) {
 class NotifierExtends extends RiverpodLintRule {
   const NotifierExtends() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'notifier_extends',
     problemMessage: r'Classes annotated by @riverpod must extend _$ClassName',
     errorSeverity: ErrorSeverity.WARNING,
@@ -96,7 +96,7 @@ class NotifierExtends extends RiverpodLintRule {
   }
 
   @override
-  List<DartFix> getFixes() => [NotifierExtendsFix()];
+  List<DartFix> get fixes => [NotifierExtendsFix()];
 }
 
 class NotifierExtendsFix extends RiverpodFix {

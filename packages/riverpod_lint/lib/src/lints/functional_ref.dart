@@ -10,7 +10,7 @@ import 'notifier_extends.dart';
 class FunctionalRef extends RiverpodLintRule {
   const FunctionalRef() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'functional_ref',
     problemMessage:
         'Functional providers must receive a ref matching the provider name as their first positional parameter.',
@@ -76,7 +76,7 @@ class FunctionalRef extends RiverpodLintRule {
   }
 
   @override
-  List<DartFix> getFixes() => [FunctionalRefFix()];
+  List<DartFix> get fixes => [FunctionalRefFix()];
 }
 
 class FunctionalRefFix extends RiverpodFix {

@@ -12,7 +12,7 @@ import 'scoped_providers_should_specify_dependencies.dart';
 class MissingProviderScope extends RiverpodLintRule {
   const MissingProviderScope() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'missing_provider_scope',
     problemMessage: 'Flutter applications should have a ProviderScope widget '
         'at the top of the widget tree.',
@@ -47,7 +47,7 @@ class MissingProviderScope extends RiverpodLintRule {
   }
 
   @override
-  List<DartFix> getFixes() => [AddProviderScope()];
+  List<DartFix> get fixes => [AddProviderScope()];
 }
 
 class AddProviderScope extends DartFix {
@@ -60,7 +60,7 @@ class AddProviderScope extends DartFix {
     List<AnalysisError> others,
   ) {
     context.registry.addMethodInvocation((node) {
-      // The method is not impacte by this analysis error
+      // The method is not impact by this analysis error
       if (!node.sourceRange.intersects(analysisError.sourceRange)) return;
 
       final changeBuilder = reporter.createChangeBuilder(

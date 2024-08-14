@@ -9,7 +9,7 @@ import '../riverpod_custom_lint.dart';
 class AvoidPublicNotifierProperties extends RiverpodLintRule {
   const AvoidPublicNotifierProperties() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'avoid_public_notifier_properties',
     problemMessage: 'Notifiers should not have public properties/getters. '
         'Instead, all their public API should be exposed through the `state` property.',

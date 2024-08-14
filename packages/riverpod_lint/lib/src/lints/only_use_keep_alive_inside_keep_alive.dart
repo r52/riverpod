@@ -9,7 +9,7 @@ import '../riverpod_custom_lint.dart';
 class OnlyUseKeepAliveInsideKeepAlive extends RiverpodLintRule {
   const OnlyUseKeepAliveInsideKeepAlive() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'only_use_keep_alive_inside_keep_alive',
     problemMessage: 'If a provider is declared as `keepAlive`, '
         'it can only use providers that are also declared as `keepAlive.',

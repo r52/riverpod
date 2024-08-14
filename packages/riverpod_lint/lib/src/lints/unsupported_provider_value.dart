@@ -15,7 +15,7 @@ extension on ClassBasedProviderDeclaration {
 class UnsupportedProviderValue extends RiverpodLintRule {
   const UnsupportedProviderValue() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'unsupported_provider_value',
     problemMessage:
         'The riverpod_generator package does not support {0} values.',

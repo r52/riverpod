@@ -10,7 +10,7 @@ class AvoidManualProvidersAsGeneratedProviderDependency
   const AvoidManualProvidersAsGeneratedProviderDependency()
       : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'avoid_manual_providers_as_generated_provider_dependency',
     problemMessage:
         'Generated providers should only depend on other generated providers. '

@@ -9,7 +9,7 @@ import '../riverpod_custom_lint.dart';
 class RiverpodSyntaxError extends RiverpodLintRule {
   const RiverpodSyntaxError() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'riverpod_syntax_error',
     problemMessage: '{0}',
     errorSeverity: ErrorSeverity.ERROR,

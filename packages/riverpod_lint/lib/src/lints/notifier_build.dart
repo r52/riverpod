@@ -11,7 +11,7 @@ const _buildMethodName = 'build';
 class NotifierBuild extends RiverpodLintRule {
   const NotifierBuild() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'notifier_build',
     problemMessage:
         'Classes annotated by `@riverpod` must have the `build` method',
@@ -49,9 +49,7 @@ class NotifierBuild extends RiverpodLintRule {
   }
 
   @override
-  List<RiverpodFix> getFixes() => [
-        AddBuildMethodFix(),
-      ];
+  List<RiverpodFix> get fixes => [AddBuildMethodFix()];
 }
 
 class AddBuildMethodFix extends RiverpodFix {

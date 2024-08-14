@@ -27,7 +27,7 @@ class ConvertToStatefulBaseWidget extends RiverpodAssist {
 
   @override
   void run(
-    CustomLintResolver resolver,
+    DartResolver resolver,
     ChangeReporter reporter,
     CustomLintContext context,
     SourceRange target,

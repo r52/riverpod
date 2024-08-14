@@ -31,7 +31,7 @@ PluginBase createPlugin() => _RiverpodPlugin();
 
 class _RiverpodPlugin extends PluginBase {
   @override
-  List<RiverpodLintRule> getLintRules(CustomLintConfigs configs) => [
+  List<RiverpodLintRule> get lintRules => [
         const AsyncValueNullablePattern(),
         const AvoidBuildContextInProviders(),
         const OnlyUseKeepAliveInsideKeepAlive(),
@@ -55,7 +55,7 @@ class _RiverpodPlugin extends PluginBase {
       ];
 
   @override
-  List<Assist> getAssists() => [
+  List<RiverpodAssist> get assists => [
         WrapWithConsumer(),
         WrapWithProviderScope(),
         ...StatelessBaseWidgetType.values.map(

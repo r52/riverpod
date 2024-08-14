@@ -6,3 +6,7 @@ dependency_overrides:
   analyzer: ^6.0.0
   riverpod:
     path: ../riverpod
+  custom_lint_core:
+    path: /Users/remirousselet/dev/invertase/vscode_lint/packages/custom_lint_core
+  custom_lint_internal:
+    path: /Users/remirousselet/dev/invertase/vscode_lint/packages/custom_lint_internal

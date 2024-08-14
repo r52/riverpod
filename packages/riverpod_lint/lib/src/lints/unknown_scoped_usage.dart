@@ -11,7 +11,7 @@ import '../riverpod_custom_lint.dart';
 class UnknownScopedUsage extends RiverpodLintRule {
   const UnknownScopedUsage() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'unknown_scoped_usage',
     problemMessage:
         'A provider was used, but could not find the associated `ref`.',

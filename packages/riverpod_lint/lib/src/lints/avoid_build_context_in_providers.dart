@@ -12,7 +12,7 @@ const TypeChecker buildContextType = TypeChecker.fromName(
 class AvoidBuildContextInProviders extends RiverpodLintRule {
   const AvoidBuildContextInProviders() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'avoid_build_context_in_providers',
     problemMessage:
         'Passing BuildContext to providers indicates mixing UI with the business logic.',

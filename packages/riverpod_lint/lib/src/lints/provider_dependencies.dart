@@ -196,7 +196,7 @@ extension on AccumulatedDependencyList {
 class ProviderDependencies extends RiverpodLintRule {
   const ProviderDependencies() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'provider_dependencies',
     problemMessage: '{0}',
     errorSeverity: ErrorSeverity.WARNING,
@@ -295,7 +295,7 @@ class ProviderDependencies extends RiverpodLintRule {
   }
 
   @override
-  List<DartFix> getFixes() => [_ProviderDependenciesFix()];
+  List<DartFix> get fixes => [_ProviderDependenciesFix()];
 }
 
 class _ProviderDependenciesFix extends RiverpodFix {

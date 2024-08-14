@@ -9,7 +9,7 @@ import '../riverpod_custom_lint.dart';
 class MissingLegacyImport extends RiverpodLintRule {
   const MissingLegacyImport() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'missing_legacy_import',
     problemMessage:
         'StateProvider/StateNotifierProvider/ChangeNotifierProvider/StateNotifier were used '
@@ -65,7 +65,7 @@ class MissingLegacyImport extends RiverpodLintRule {
   }
 
   @override
-  List<DartFix> getFixes() => [_AddMissingLegacyImport()];
+  List<DartFix> get fixes => [_AddMissingLegacyImport()];
 }
 
 class _AddMissingLegacyImport extends DartFix {

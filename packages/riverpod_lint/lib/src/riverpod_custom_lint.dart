@@ -1,5 +1,7 @@
+import 'package:analyzer/dart/analysis/analysis_context_collection.dart';
 import 'package:analyzer/source/source_range.dart';
 import 'package:custom_lint_builder/custom_lint_builder.dart';
+import 'package:custom_lint_internal/src/protocol.dart';
 import 'package:riverpod_analyzer_utils/riverpod_analyzer_utils.dart';
 
 SourceRange sourceRangeFrom({required int start, required int end}) {
@@ -41,13 +43,17 @@ extension CaseChangeExtension on String {
 
 abstract class RiverpodAssist extends DartAssist with _ParseRiverpod {
   @override
-  Future<void> startUp(
-    CustomLintResolver resolver,
+  Future<DartEmitterRunner?> emit(
+    AnalysisContextCollection Function() collection,
+    String path,
     CustomLintContext context,
-    SourceRange target,
+    DartAssistInput input,
   ) async {
-    await _setupRiverpod(resolver, context);
-    await super.startUp(resolver, context, target);
+    final runner = await super.emit(collection, path, context, input);
+    if (runner == null) return null;
+
+    await _setupRiverpod(runner.resolver, context);
+    return runner;
   }
 }
 
@@ -55,26 +61,36 @@ abstract class RiverpodLintRule extends DartLintRule with _ParseRiverpod {
   const RiverpodLintRule({required super.code});
 
   @override
-  Future<void> startUp(
-    CustomLintResolver resolver,
+  Future<DartEmitterRunner?> emit(
+    AnalysisContextCollection Function() collection,
+    String path,
     CustomLintContext context,
+    void Function(CustomAnalysisError) emit,
   ) async {
-    await _setupRiverpod(resolver, context);
-    await super.startUp(resolver, context);
+    final runner = await super.emit(collection, path, context, emit);
+    if (runner == null) return null;
+
+    await _setupRiverpod(runner.resolver, context);
+    return runner;
   }
 
   @override
-  List<DartFix> getFixes() => [];
+  List<DartFix> get fixes => [];
 }
 
 abstract class RiverpodFix extends DartFix with _ParseRiverpod {
   @override
-  Future<void> startUp(
-    CustomLintResolver resolver,
+  Future<DartEmitterRunner?> emit(
+    AnalysisContextCollection Function() collection,
+    String path,
     CustomLintContext context,
+    DartFixInput input,
   ) async {
-    await _setupRiverpod(resolver, context);
-    await super.startUp(resolver, context);
+    final runner = await super.emit(collection, path, context, input);
+    if (runner == null) return null;
+
+    await _setupRiverpod(runner.resolver, context);
+    return runner;
   }
 }
 
@@ -82,13 +98,13 @@ mixin _ParseRiverpod {
   static final _contextKey = Object();
 
   Future<void> _setupRiverpod(
-    CustomLintResolver resolver,
+    DartResolver resolver,
     CustomLintContext context,
   ) async {
     if (context.sharedState.containsKey(_contextKey)) return;
     // Only run the riverpod parsing logic once
     final registry = context.sharedState[_contextKey] = RiverpodAstRegistry();
-    final unit = await resolver.getResolvedUnitResult();
+    final unit = await resolver.resolvedUnitResult;
 
     context.addPostRunCallback(() => registry.run(unit.unit));
   }

@@ -11,7 +11,7 @@ import '../riverpod_custom_lint.dart';
 class AsyncValueNullablePattern extends RiverpodLintRule {
   const AsyncValueNullablePattern() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'async_value_nullable_pattern',
     problemMessage:
         'Using AsyncValue(:final value?) on possibly nullable value is unsafe. '
@@ -73,7 +73,7 @@ class AsyncValueNullablePattern extends RiverpodLintRule {
   }
 
   @override
-  List<DartFix> getFixes() => [_AddHasDataFix()];
+  List<DartFix> get fixes => [_AddHasDataFix()];
 }
 
 class _AddHasDataFix extends DartFix {

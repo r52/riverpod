@@ -11,7 +11,7 @@ const disposeMethod = 'dispose';
 class AvoidRefInsideStateDispose extends RiverpodLintRule {
   const AvoidRefInsideStateDispose() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'avoid_ref_inside_state_dispose',
     problemMessage: "Avoid using 'Ref' inside State.dispose.",
     errorSeverity: ErrorSeverity.WARNING,

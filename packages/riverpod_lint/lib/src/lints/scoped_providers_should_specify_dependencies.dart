@@ -35,7 +35,7 @@ extension SimpleIdentifierX on SimpleIdentifier {
 class ScopedProvidersShouldSpecifyDependencies extends RiverpodLintRule {
   const ScopedProvidersShouldSpecifyDependencies() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'scoped_providers_should_specify_dependencies',
     problemMessage:
         'Providers which are overridden in a non-root ProviderContainer/ProviderScope should specify dependencies.',

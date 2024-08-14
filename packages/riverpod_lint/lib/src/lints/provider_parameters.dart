@@ -10,7 +10,7 @@ import '../riverpod_custom_lint.dart';
 class ProviderParameters extends RiverpodLintRule {
   const ProviderParameters() : super(code: _code);
 
-  static const _code = LintCode(
+  static const _code = CustomLintCode(
     name: 'provider_parameters',
     problemMessage: 'Providers parameters should have a consistent ==. '
         'Meaning either the values should be cached, or the parameters should override ==',
